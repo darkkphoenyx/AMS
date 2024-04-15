@@ -4,10 +4,7 @@ import com.texas.ams.dto.UserDto;
 import com.texas.ams.model.User;
 import com.texas.ams.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -28,4 +25,11 @@ public class UserController {
         );
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity fetchUserById(@PathVariable Integer id) {
+        UserDto data = userService.getById(id);
+            return ResponseEntity.ok(
+                    Map.of("message", "User Fetched Successfully.", "data", data)
+            );
+    }
 }

@@ -7,6 +7,7 @@ import com.texas.ams.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,7 +30,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getById(Integer id) {
-        return null;
+        Optional<User> userOptional = userRepo.findById(id);
+        if(userOptional.isEmpty()){
+            throw new RuntimeException("User Not Found");
+        }
+        else{
+            User user = userOptional.get();
+            UserDto userDto = new UserDto(
+                    user.getId(), user.getUsername(),user.getRole()
+            );
+            return userDto;
+        }
     }
 
 

@@ -28,6 +28,11 @@ public class UserDto {
     public UserDto() {
     }
 
+    public UserDto(Integer id, String username, Role role) {
+        this.id = id;
+        this.username = username;
+        this.role = role;
+    }
 
 
     public Integer getId() {
