@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -46,7 +47,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getAll() {
-        return List.of();
+        List<User> userList = userRepo.findAll();
+        List<UserDto> userDtoList = userList.stream()
+                .map(user -> {
+                    UserDto userDto = new UserDto(
+                            user.getId(), user.getUsername(),user.getRole()
+                    );
+                    return userDto;
+                }).collect(Collectors.toList());
+        return userDtoList;
     }
 
     @Override

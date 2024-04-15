@@ -6,10 +6,11 @@ import com.texas.ams.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/student")
+@RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
 
@@ -31,5 +32,12 @@ public class UserController {
             return ResponseEntity.ok(
                     Map.of("message", "User Fetched Successfully.", "data", data)
             );
+    }
+    @GetMapping("/list")
+    public ResponseEntity fetchAllUsers(){
+        List<UserDto> data = userService.getAll();
+        return ResponseEntity.ok(
+                Map.of("message","User List Fetched Successfully..","data",data)
+        );
     }
 }
