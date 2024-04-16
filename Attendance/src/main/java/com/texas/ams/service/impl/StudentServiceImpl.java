@@ -29,8 +29,8 @@ public class StudentServiceImpl implements StudentService {
         student.setName(studentDto.getName());
         student.setAddress(studentDto.getAddress());
         student.setAge(studentDto.getAge());
-        student.setFatherName(student.getFatherName());
-        student.setMotherName(student.getMotherName());
+        student.setFather_Name(student.getFather_Name());
+        student.setMother_Name(student.getMother_Name());
         student.setPhone(studentDto.getPhone());
         student.setEmail(studentDto.getEmail());
         student.setGender(studentDto.getGender());
@@ -47,7 +47,7 @@ public class StudentServiceImpl implements StudentService {
         else{
             Student student = studentOptional.get();
             StudentDto studentDto = new StudentDto(
-                    student.getName(),student.getAddress(),student.getAge(),student.getFatherName(),student.getMotherName(),student.getPhone(),student.getEmail(),student.getGender()
+                    student.getName(),student.getAddress(),student.getAge(),student.getFather_Name(),student.getMother_Name(),student.getPhone(),student.getEmail(),student.getGender()
             );
             return studentDto;
         }

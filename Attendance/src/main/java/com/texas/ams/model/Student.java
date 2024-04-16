@@ -18,10 +18,10 @@ public class Student {
     private Integer age;
 
     @Column(name="Father's Name", nullable = false)
-    private String fatherName;
+    private String father_Name;
 
     @Column(name="Mother's Name", nullable = false)
-    private String motherName;
+    private String mother_Name;
 
     @Column(name="Phone No.", nullable = false)
     private String phone;
@@ -32,24 +32,24 @@ public class Student {
     @Column(name="Gender", nullable = false)
     private String gender;
 
-    public Student(Integer id, String name, String address, Integer age, String fatherName, String motherName, String phone, String email, String gender) {
+    public Student(Integer id, String name, String address, Integer age, String father_Name, String mother_Name, String phone, String email, String gender) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.age = age;
-        this.fatherName = fatherName;
-        this.motherName = motherName;
+        this.father_Name = father_Name;
+        this.mother_Name = mother_Name;
         this.phone = phone;
         this.email = email;
         this.gender = gender;
     }
 
-    public Student(String name, String address, Integer age, String fatherName, String motherName, String phone, String email, String gender) {
+    public Student(String name, String address, Integer age, String father_Name, String mother_Name, String phone, String email, String gender) {
         this.name = name;
         this.address = address;
         this.age = age;
-        this.fatherName = fatherName;
-        this.motherName = motherName;
+        this.father_Name = father_Name;
+        this.mother_Name = mother_Name;
         this.phone = phone;
         this.email = email;
         this.gender = gender;
@@ -90,20 +90,20 @@ public class Student {
         this.age = age;
     }
 
-    public String getFatherName() {
-        return fatherName;
+    public String getFather_Name() {
+        return father_Name;
     }
 
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
+    public void setFather_Name(String father_Name) {
+        this.father_Name = father_Name;
     }
 
-    public String getMotherName() {
-        return motherName;
+    public String getMother_Name() {
+        return mother_Name;
     }
 
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
+    public void setMother_Name(String mother_Name) {
+        this.mother_Name = mother_Name;
     }
 
     public String getPhone() {
