@@ -22,23 +22,18 @@ public class StudentServiceImpl implements StudentService {
     public StudentServiceImpl(StudentRepo studentRepo) {
         this.studentRepo = studentRepo;
     }
-//
-//    @Override
-//    public Integer save(StudentDto studentDto) {
-//        Student student = new Student();
-//        student.setName(studentDto.getName());
-//        student.setAddress(studentDto.getAddress());
-//        student.setPresent(studentDto.isPresent()); // Assuming StudentDto has a method isPresent() returning a boolean
-//        Student savedStudent = studentRepo.save(student);
-//        return savedStudent.getId();
-//    }
 
     @Override
     public Integer save(StudentDto studentDto) {
         Student student = new Student();
         student.setName(studentDto.getName());
         student.setAddress(studentDto.getAddress());
-        student.setPresent(studentDto.isPresent()); // Ensure isPresent is properly set
+        student.setAge(studentDto.getAge());
+        student.setFatherName(student.getFatherName());
+        student.setMotherName(student.getMotherName());
+        student.setPhone(studentDto.getPhone());
+        student.setEmail(studentDto.getEmail());
+        student.setGender(studentDto.getGender());
         Student savedStudent = studentRepo.save(student);
         return savedStudent.getId();
     }
@@ -52,7 +47,7 @@ public class StudentServiceImpl implements StudentService {
         else{
             Student student = studentOptional.get();
             StudentDto studentDto = new StudentDto(
-                    student.getName(),student.getAddress(),student.getPresent()
+                    student.getName(),student.getAddress(),student.getAge(),student.getFatherName(),student.getMotherName(),student.getPhone(),student.getEmail(),student.getGender()
             );
             return studentDto;
         }
@@ -63,19 +58,6 @@ public class StudentServiceImpl implements StudentService {
         return List.of();
     }
 
-
-//    @Override
-//    public List<UserDto> getAll() {
-//        List<User> userList = userRepo.findAll();
-//        List<UserDto> userDtoList = userList.stream()
-//                .map(user -> {
-//                    UserDto userDto = new UserDto(
-//                            user.getId(), user.getUsername(),user.getRole()
-//                    );
-//                    return userDto;
-//                }).collect(Collectors.toList());
-//        return userDtoList;
-//    }
 
     @Override
     public void deleteById(Integer id) {

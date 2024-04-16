@@ -4,19 +4,34 @@ public class StudentDto {
     private Integer id;
     private String name;
     private String address;
-    private Boolean isPresent;
+    private Integer age;
+    private String fatherName;
+    private String motherName;
+    private String phone;
+    private String email;
+    private String gender;
 
-    public StudentDto(Integer id, String name, String address, Boolean isPresent) {
+    public StudentDto(Integer id, String name, String address, Integer age, String fatherName, String motherName, String phone, String email, String gender) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.isPresent = isPresent;
+        this.age = age;
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
     }
 
-    public StudentDto(String name, String address, Boolean isPresent) {
+    public StudentDto(String name, String address, Integer age, String fatherName, String motherName, String phone, String email, String gender) {
         this.name = name;
         this.address = address;
-        this.isPresent = isPresent;
+        this.age = age;
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
     }
 
     public StudentDto() {
@@ -46,12 +61,51 @@ public class StudentDto {
         this.address = address;
     }
 
-    public Boolean isPresent() {
-        return isPresent;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setPresent(Boolean present) {
-        isPresent = present;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }
