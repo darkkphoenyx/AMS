@@ -29,8 +29,8 @@ public class StudentServiceImpl implements StudentService {
         student.setName(studentDto.getName());
         student.setAddress(studentDto.getAddress());
         student.setAge(studentDto.getAge());
-        student.setFather_Name(student.getFather_Name());
-        student.setMother_Name(student.getMother_Name());
+        student.setFather_Name(studentDto.getFather_Name());
+        student.setMother_Name(studentDto.getMother_Name());
         student.setPhone(studentDto.getPhone());
         student.setEmail(studentDto.getEmail());
         student.setGender(studentDto.getGender());
