@@ -10,4 +10,5 @@ public class AttendanceManagementSystemApplication {
 		SpringApplication.run(AttendanceManagementSystemApplication.class, args);
 	}
 
+
 }

@@ -1,9 +1,6 @@
 package com.texas.ams.service;
 
 import com.texas.ams.dto.StudentDto;
-import com.texas.ams.dto.UserDto;
-import com.texas.ams.model.User;
-
 import java.util.List;
 
 public interface StudentService {

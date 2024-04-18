@@ -1,8 +1,6 @@
 package com.texas.ams.service;
 
 import com.texas.ams.dto.UserDto;
-import com.texas.ams.model.User;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
