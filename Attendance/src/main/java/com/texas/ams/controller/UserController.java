@@ -40,4 +40,11 @@ public class UserController {
                 Map.of("message","User List Fetched Successfully..","data",data)
         );
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteStudentById(@PathVariable("id") Integer id) {
+        userService.deleteById(id);
+        return ResponseEntity.ok(
+                Map.of("message", "Student deleted successfully.")
+        );
+    }
 }

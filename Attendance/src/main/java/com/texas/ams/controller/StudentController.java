@@ -32,11 +32,18 @@ public class StudentController {
                 Map.of("message", "Student Fetched Successfully.", "data", data)
         );
     }
-//    @GetMapping("/list")
-//    public ResponseEntity fetchAllStudents(){
-//        List<StudentDto> data = studentService.getAll();
-//        return ResponseEntity.ok(
-//                Map.of("message","Student List Fetched Successfully..","data",data)
-//        );
-//    }
+    @GetMapping("/list")
+    public ResponseEntity fetchAllStudents(){
+        List<StudentDto> data = studentService.getAll();
+        return ResponseEntity.ok(
+                Map.of("message","Student List Fetched Successfully..","data",data)
+        );
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteStudentById(@PathVariable("id") Integer id) {
+        studentService.deleteById(id);
+        return ResponseEntity.ok(
+                Map.of("message", "Student deleted successfully.")
+        );
+    }
 }

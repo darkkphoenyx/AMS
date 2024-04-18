@@ -47,7 +47,7 @@ public class StudentServiceImpl implements StudentService {
         else{
             Student student = studentOptional.get();
             StudentDto studentDto = new StudentDto(
-                    student.getName(),student.getAddress(),student.getAge(),student.getFather_Name(),student.getMother_Name(),student.getPhone(),student.getEmail(),student.getGender()
+                    student.getId(),student.getName(),student.getAddress(),student.getAge(),student.getFather_Name(),student.getMother_Name(),student.getPhone(),student.getEmail(),student.getGender()
             );
             return studentDto;
         }
@@ -55,13 +55,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDto> getAll() {
-        return List.of();
+        List<Student> studentList = studentRepo.findAll();
+        List<StudentDto> studentDtoList = studentList.stream()
+                .map(student -> {
+                    StudentDto studentDto = new StudentDto(
+                    student.getId(),student.getName(),student.getAddress(),student.getAge(),student.getFather_Name(),student.getMother_Name(),student.getPhone(),student.getEmail(),student.getGender()
+            );
+                    return studentDto;
+                }).collect(Collectors.toList());
+        return studentDtoList;
     }
-
+    
 
     @Override
     public void deleteById(Integer id) {
-
+        if (studentRepo.existsById(id)) {
+            studentRepo.deleteById(id);
+        } else {
+            throw new RuntimeException("User Not Found");
+        }
     }
 
     @Override

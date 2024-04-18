@@ -60,7 +60,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(Integer id) {
-
+        if (userRepo.existsById(id)) {
+            userRepo.deleteById(id);
+        } else {
+            throw new RuntimeException("User Not Found");
+        }
     }
 
     @Override
