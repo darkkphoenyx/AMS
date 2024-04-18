@@ -3,33 +3,35 @@ package com.texas.ams.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="student_seq", sequenceName = "student_seq",allocationSize = 1,initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "student_seq")
     private Integer id;
 
-    @Column(name = "Name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "Address", nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name="DOB", nullable = false)
+    @Column(name="age", nullable = false)
     private Integer age;
 
-    @Column(name="Father's Name", nullable = false)
+    @Column(name="fathers_name", nullable = false)
     private String father_Name;
 
-    @Column(name="Mother's Name", nullable = false)
+    @Column(name="mothers_name", nullable = false)
     private String mother_Name;
 
-    @Column(name="Phone No.", nullable = false)
+    @Column(name="phoneNo", nullable = false)
     private String phone;
 
-    @Column(name="Email", nullable = false)
+    @Column(name="email", nullable = false)
     private String email;
 
-    @Column(name="Gender", nullable = false)
+    @Column(name="gender", nullable = false)
     private String gender;
 
     public Student(Integer id, String name, String address, Integer age, String father_Name, String mother_Name, String phone, String email, String gender) {

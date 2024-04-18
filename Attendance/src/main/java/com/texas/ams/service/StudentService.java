@@ -16,6 +16,4 @@ public interface StudentService {
 
     void deleteById(Integer id);
 
-    User getUser(Integer id);
-
 }

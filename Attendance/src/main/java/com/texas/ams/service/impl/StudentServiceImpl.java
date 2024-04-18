@@ -1,13 +1,9 @@
 package com.texas.ams.service.impl;
 
 import com.texas.ams.dto.StudentDto;
-import com.texas.ams.dto.UserDto;
 import com.texas.ams.model.Student;
-import com.texas.ams.model.User;
 import com.texas.ams.repo.StudentRepo;
-import com.texas.ams.repo.UserRepo;
 import com.texas.ams.service.StudentService;
-import com.texas.ams.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +21,14 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Integer save(StudentDto studentDto) {
-        Student student = new Student();
+        Student student;
+        if (studentDto.getId()!=null && studentDto.getId()>0) {
+            student = studentRepo.findById(studentDto.getId()).orElseThrow(
+                    () -> new RuntimeException("Student Not Found")
+            );
+        }else{
+            student = new Student();
+        }
         student.setName(studentDto.getName());
         student.setAddress(studentDto.getAddress());
         student.setAge(studentDto.getAge());
@@ -65,19 +68,30 @@ public class StudentServiceImpl implements StudentService {
                 }).collect(Collectors.toList());
         return studentDtoList;
     }
-    
+
 
     @Override
     public void deleteById(Integer id) {
         if (studentRepo.existsById(id)) {
             studentRepo.deleteById(id);
         } else {
-            throw new RuntimeException("User Not Found");
+            throw new RuntimeException("Student Not Found");
         }
     }
 
-    @Override
-    public User getUser(Integer id) {
-        return null;
-    }
+//    @Override
+//    public void update(StudentDto studentDto) {
+//        Student student = studentRepo.findById(studentDto.getId()).orElseThrow(
+//                () -> new RuntimeException("Student Not Found")
+//        );
+//        student.setName(studentDto.getName());
+//        student.setAddress(studentDto.getAddress());
+//        student.setAge(studentDto.getAge());
+//        student.setFather_Name(studentDto.getFather_Name());
+//        student.setMother_Name(studentDto.getMother_Name());
+//        student.setPhone(studentDto.getPhone());
+//        student.setEmail(studentDto.getEmail());
+//        student.setGender(studentDto.getGender());
+//        studentRepo.save(student);
+//    }
 }

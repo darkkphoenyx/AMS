@@ -2,6 +2,7 @@ package com.texas.ams.controller;
 
 import com.texas.ams.dto.StudentDto;
 import com.texas.ams.service.StudentService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,9 +42,12 @@ public class StudentController {
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteStudentById(@PathVariable("id") Integer id) {
-        studentService.deleteById(id);
-        return ResponseEntity.ok(
-                Map.of("message", "Student deleted successfully.")
-        );
+        try {
+            studentService.deleteById(id);
+            return ResponseEntity.ok("Student Deleted Successfully...");
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
+
 }

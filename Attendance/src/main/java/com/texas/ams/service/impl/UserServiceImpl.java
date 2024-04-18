@@ -21,7 +21,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer save(UserDto userDto) {
-        User user = new User();
+        User user;
+        if (userDto.getId()!=null && userDto.getId()>0) {
+            user = userRepo.findById(userDto.getId()).orElseThrow(
+                    () -> new RuntimeException("Student Not Found")
+            );
+        }else{
+            user = new User();
+        }
         user.setPassword(userDto.getPassword());
         user.setUsername(userDto.getUsername());
         user.setRole(userDto.getRole());
@@ -32,13 +39,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getById(Integer id) {
         Optional<User> userOptional = userRepo.findById(id);
-        if(userOptional.isEmpty()){
+        if (userOptional.isEmpty()) {
             throw new RuntimeException("User Not Found");
-        }
-        else{
+        } else {
             User user = userOptional.get();
             UserDto userDto = new UserDto(
-                    user.getId(), user.getUsername(),user.getRole()
+                    user.getId(), user.getUsername(), user.getRole()
             );
             return userDto;
         }
@@ -51,7 +57,7 @@ public class UserServiceImpl implements UserService {
         List<UserDto> userDtoList = userList.stream()
                 .map(user -> {
                     UserDto userDto = new UserDto(
-                            user.getId(), user.getUsername(),user.getRole()
+                            user.getId(), user.getUsername(), user.getRole()
                     );
                     return userDto;
                 }).collect(Collectors.toList());
@@ -67,8 +73,4 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public User getUser(Integer id) {
-        return null;
-    }
 }

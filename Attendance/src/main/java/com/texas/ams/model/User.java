@@ -7,10 +7,10 @@ import jakarta.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="user_seq", sequenceName = "user_seq",allocationSize = 1,initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq")
     private Integer id;
-
-    @Column(name = "email", nullable = false)
+    @Column(name = "username", nullable = false)
     private String username;
 
     @Column(name= "password", nullable= false)
