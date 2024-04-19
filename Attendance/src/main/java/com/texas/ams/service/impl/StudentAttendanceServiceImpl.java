@@ -10,7 +10,6 @@ import com.texas.ams.service.StudentAttendanceService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
