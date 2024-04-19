@@ -1,15 +1,19 @@
 package com.texas.ams.dto;
 
 import com.texas.ams.enums.Role;
+import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
 
     private Integer id;
 
+    @NotNull(message = "username is Mandatory")
     private String username;
 
+    @NotNull(message = "password is Mandatory")
     private String password;
 
+    @NotNull(message = "role is Mandatory")
     private Role role;
 
     public UserDto(Integer id, String username, String password, Role role) {

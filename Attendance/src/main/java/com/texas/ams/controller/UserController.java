@@ -1,8 +1,8 @@
 package com.texas.ams.controller;
 
 import com.texas.ams.dto.UserDto;
-import com.texas.ams.model.User;
 import com.texas.ams.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity saveUser(@RequestBody UserDto userDto) {
+    public ResponseEntity saveUser(@Valid @RequestBody UserDto userDto) {
         Integer data = userService.save(userDto);
         return ResponseEntity.ok(
                 Map.of("message","User saved Successfully.")

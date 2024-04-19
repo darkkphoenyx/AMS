@@ -1,14 +1,33 @@
 package com.texas.ams.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 public class StudentDto {
+
     private Integer id;
+
+    @NotNull(message = "name is Mandatory")
     private String name;
+
+    @NotNull(message = "address is Mandatory")
     private String address;
+
+    @NotNull(message = "age is Mandatory")
     private Integer age;
+
+    @NotNull(message = "father_Name is Mandatory")
     private String father_Name;
+
+    @NotNull(message = "mother_Name is Mandatory")
     private String mother_Name;
+
+    @NotNull(message = "phone is Mandatory")
     private String phone;
+
+    @NotNull(message = "email is Mandatory")
     private String email;
+
+    @NotNull(message = "gender is Mandatory")
     private String gender;
 
     public StudentDto(Integer id, String name, String address, Integer age, String father_Name, String mother_Name, String phone, String email, String gender) {

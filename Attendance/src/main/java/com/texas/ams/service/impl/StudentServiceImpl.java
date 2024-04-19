@@ -1,6 +1,7 @@
 package com.texas.ams.service.impl;
 
 import com.texas.ams.dto.StudentDto;
+import com.texas.ams.exception.StudentNotFoundException;
 import com.texas.ams.model.Student;
 import com.texas.ams.repo.StudentRepo;
 import com.texas.ams.service.StudentService;
@@ -24,7 +25,7 @@ public class StudentServiceImpl implements StudentService {
         Student student;
         if (studentDto.getId()!=null && studentDto.getId()>0) {
             student = studentRepo.findById(studentDto.getId()).orElseThrow(
-                    () -> new RuntimeException("Student Not Found")
+                    () -> new StudentNotFoundException("Student Not Found")
             );
         }else{
             student = new Student();
@@ -45,7 +46,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDto getById(Integer id) {
         Optional<Student> studentOptional = studentRepo.findById(id);
         if(studentOptional.isEmpty()){
-            throw new RuntimeException("Student Not Found");
+            throw new StudentNotFoundException("Student Not Found");
         }
         else{
             Student student = studentOptional.get();
@@ -75,7 +76,7 @@ public class StudentServiceImpl implements StudentService {
         if (studentRepo.existsById(id)) {
             studentRepo.deleteById(id);
         } else {
-            throw new RuntimeException("Student Not Found");
+            throw new StudentNotFoundException("Student Not Found");
         }
     }
 
