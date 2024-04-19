@@ -1,10 +1,7 @@
 package com.texas.ams.controller;
 
 import com.texas.ams.dto.AttendanceRequestDto;
-import com.texas.ams.dto.StudentDto;
 import com.texas.ams.service.StudentAttendanceService;
-import com.texas.ams.service.StudentService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
