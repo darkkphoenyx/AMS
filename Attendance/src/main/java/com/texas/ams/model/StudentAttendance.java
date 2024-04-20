@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-    @Table(name="Attendace_Sheet")
+    @Table(name="Attendance_Sheet")
 public class StudentAttendance {
     @Id
     @SequenceGenerator(name="atttendace_seq", sequenceName = "atttendace_seq",allocationSize = 1,initialValue = 1)

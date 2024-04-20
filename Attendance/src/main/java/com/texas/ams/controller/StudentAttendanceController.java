@@ -1,10 +1,13 @@
 package com.texas.ams.controller;
 
 import com.texas.ams.dto.AttendanceRequestDto;
+import com.texas.ams.dto.DisplayAttendanceDto;
 import com.texas.ams.service.StudentAttendanceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,4 +28,12 @@ public class StudentAttendanceController {
         );
     }
 
+    @GetMapping("/date/{attendanceDate}")
+    public ResponseEntity fetchAttendace(@PathVariable("attendanceDate") LocalDate attendanceDate)
+    {
+        List<DisplayAttendanceDto> data = studentAttendanceService.getAttendanceListByDate(attendanceDate);
+        return ResponseEntity.ok(
+                Map.of("message","Present Student Attendance Fetched Successfully...","data",data)
+        );
+    }
 }
