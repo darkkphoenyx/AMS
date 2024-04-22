@@ -24,5 +24,4 @@ public class StudentAttendanceController {
                 Map.of("message","Attendance done Successfully.")
         );
     }
-
 }
