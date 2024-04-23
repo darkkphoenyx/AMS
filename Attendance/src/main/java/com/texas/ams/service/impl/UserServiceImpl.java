@@ -4,6 +4,7 @@ import com.texas.ams.dto.UserDto;
 import com.texas.ams.model.User;
 import com.texas.ams.repo.UserRepo;
 import com.texas.ams.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +16,11 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepo userRepo;
 
-    public UserServiceImpl(UserRepo userRepo) {
+    private final PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(UserRepo userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -29,7 +33,11 @@ public class UserServiceImpl implements UserService {
         }else{
             user = new User();
         }
-        user.setPassword(userDto.getPassword());
+        //encoding the password using Bcrypt
+        String plainPassword=(userDto.getPassword());
+        String encodedPassword = passwordEncoder.encode(plainPassword);
+        user.setPassword(encodedPassword);
+
         user.setUsername(userDto.getUsername());
         user.setRole(userDto.getRole());
         User savedUser = userRepo.save(user);
